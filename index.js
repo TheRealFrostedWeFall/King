@@ -15,29 +15,6 @@ const bot_controller = config.bot_controller;
 const prefix = config.prefix;
 const token = config.token;
 
-var queue = [];
-var isPlaying = false;
-var dispatcher = null;
-var voiceChannel = null;
-var skipReq = 0;
-var skippers = [];
-
-bot.login(token);
-
-bot.on('message', function (message) {
-  const member = message.member;
-  const mess = message.content.toLowerCase();
-
-
-
-
-
-
-
-
-
-
-
 //Commands File Event
 
 fs.readdir("./commands/", (err, files) => {
@@ -57,8 +34,34 @@ fs.readdir("./commands/", (err, files) => {
 });
 
 
+var queue = [];
+var isPlaying = false;
+var dispatcher = null;
+var voiceChannel = null;
+var skipReq = 0;
+var skippers = [];
+
+bot.login(token);
+
+bot.on("message", function (message) {
+  const member = message.member;
+  const msg = message.content.toLowerCase();
+  const args = message.content.split(' ').slice(1).join(" ");
+});
+
 bot.on("ready", async () => {
 
   console.log(`INFO: ${bot.user.username} is online on ${bot.guilds.size} servers and watching ${bot.users.size} users!`);
+  bot.user.setActivity(`over ${bot.guilds.size} guilds! | ~prefix`, {type: "WATCHING"});
   bot.user.setStatus('dnd')
 });
+
+
+
+
+
+
+
+
+
+
