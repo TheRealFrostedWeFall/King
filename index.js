@@ -45,7 +45,7 @@ fs.readdir("./commands/", (err, files) => {
   if(err) console.log(err);
   let jsfile = files.filter(f => f.split(".").pop() === "js");
   if(jsfile.length <= 0){
-    console.log("Couldn't find commands.");
+    console.log("ERROR: Couldn't find command file, please restart the bot to fix the error!");
     return;
   }
 
