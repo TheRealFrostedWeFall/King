@@ -15,25 +15,6 @@ const bot_controller = config.bot_controller;
 const prefix = config.prefix;
 const token = config.token;
 
-//Commands File Event
-
-fs.readdir("./commands/", (err, files) => {
-
-  if(err) console.log(err);
-  let jsfile = files.filter(f => f.split(".").pop() === "js");
-  if(jsfile.length <= 0){
-    console.log("ERROR: Couldn't find command file, please restart the bot to fix the error!");
-    return;
-  }
-
-  jsfile.forEach((f, i) =>{
-    let props = require(`./commands/${f}`);
-    console.log(`INFO: ${f} command file was loaded successfully!`);
-    bot.commands.set(props.help.name, props);
-  });
-});
-
-
 var queue = [];
 var isPlaying = false;
 var dispatcher = null;
